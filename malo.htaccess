@@ -1,0 +1,6 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^invitados/(.*)$ http://localhost/wedding/?user_id=$1 [R=301,L]
+
+# /invitados/truizd/
+# RewriteRule ^invitados/([0-9-]+)/$   index.php?user_id=$1 [nc,qsa]

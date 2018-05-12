@@ -1,0 +1,14 @@
+#Options +FollowSymLinks
+#RewriteEngine On
+#RewriteRule ^invitados/(.*)$ http://localhost/wedding/?user_id=$1 [R=301,L]
+#RewriteRule "^invitados/(.*)$" "index.php?user_id=$1" [L,QSA,NC]
+
+
+#RewriteEngine on
+
+#RewriteCond %{THE_REQUEST} /index\.php\?user_id=([^\s&]+) [NC]
+#RewriteRule ^ invitados/%1? [R=302,L]
+
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteRule ^invitados/([^/]+)/?$ index.php?user_id=$1 [L,QSA,NC]
