@@ -33,6 +33,7 @@
 			<link rel="stylesheet" href="css/owl.carousel.css">
 			<link rel="stylesheet" href="css/bootstrap.css">
 			<link rel="stylesheet" href="css/main.css">
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter" />
 		</head>
 		<body>
 
@@ -63,6 +64,9 @@
 							      <li class="nav-item">
 							        <a class="nav-link" href="#infoboda">La Boda</a>
 							      </li>
+                    <li class="nav-item">
+							        <a class="nav-link" href="#about">C&oacute;digo Vestuario</a>
+							      </li>
 							      <li class="nav-item">
 							        <a class="nav-link" href="#reservation">
                       <?php
@@ -73,18 +77,21 @@
                       ?>
                       </a>
 							      </li>
+                    <li class="nav-item">
+							        <a class="nav-link" href="#gallery">Galer&iacute;a Preboda</a>
+							      </li>
 								   <!-- Dropdown -->
-								    <li class="nav-item dropdown">
+								    <!--
+                    <li class="nav-item dropdown">
 								      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
 								        Galer&iacute;as
 								      </a>
 								      <div class="dropdown-menu">
 								        <a class="dropdown-item" href="#about">Nuestra Historia</a>
                         <a class="dropdown-item" href="#gallery">Preboda</a>
-                        <!--<a class="dropdown-item" href="generic.php">Generic</a>
-								        <a class="dropdown-item" href="elements.php">Elements</a>-->
 								      </div>
-								    </li>							     					      
+								    </li>
+                    -->
 							    </ul>
 							  </div>
 							</nav> 
@@ -99,10 +106,19 @@
 				<div class="overlay overlay-bg"></div>
 				<div class="container">
 						<div class="row fullscreen align-items-center justify-content-center" style="height: 915px;">
-              <div class="banner-content col-lg-12 col-md-12" style="padding-top: 580px;"> <!-- style="padding-top: 580px;" -->
-                  <h4>
-                    <?php echo getTextoInvitados($_GET['user_id']); ?><br>
-                  </h4>
+              <div class="banner-content col-lg-12 col-md-12" style="padding-top: 540px;"> <!-- style="padding-top: 580px;" -->
+                  <p>
+                    <a class="font-invitacion2" style="color:#525252;">
+                      Invitaci&oacute;n para:
+                    </a>
+                    <a class="font-invitacion3" style="color:#525252;">
+                      <?php echo getTextoInvitados($_GET['user_id']); ?>
+                    </a>
+                    <br>
+                    <a class="font-invitacion4" style="color:525252;">
+                      Por favor confirmanos tu asistencia <a href='#reservation'>aqu&iacute;</a>
+                    </a>
+                  </p>
 							</div>
 						</div>
 				</div>
@@ -168,8 +184,7 @@
 						<div class="col-lg-6">
 							<h1>Informaci&oacute;n de la Boda</h1>
 							<p>
-								Nuestro gran d&iacute;a se llevar&aacute; a cabo en dos lugares campestres en Copacabana (Antioquia).<br>Esperamos que se sientan a gusto en estos espacios, pues los hemos escogido para pasar un d&iacute;a muy especial con ustedes nuestros familiares y amigos m&aacute;s cercanos.<br>
-                Por favor asistir con traje de coctel...  Las mujeres no usar color blanco... Los hombres evitar usar color gris...
+								Nuestro gran d&iacute;a se llevar&aacute; a cabo en dos lugares campestres en Copacabana (Antioquia).<br>Esperamos que se sientan a gusto en estos espacios, pues los hemos escogido para pasar un d&iacute;a muy especial con ustedes nuestros familiares y amigos m&aacute;s cercanos.
 							</p>							
 						</div>
 					</div>					
@@ -182,11 +197,11 @@
 						<div class="col-lg-6 col-md-12 mt-60 no-padding">
 							<div class="info-content">
 								<h1>Ceremonia</h1>
-								<p>La ceremonia se realizar&aacute; en la iglesia "San Juan de la Tasajera" ubicada en Copacabana (Antioquia).<br>Les aconsejamos salir con tiempo desde sus casas ya que el lugar es en las afueras de Medell&iacute;n y por ser un d&iacute;a s&aacute;bado, el tr&aacute;fico en la ciudad es bastante pesado.</p>
+								<p>La ceremonia se realizar&aacute; en la parroquia <b>"San Juan de la Tasajera"</b> ubicada en Copacabana (Antioquia).<br>Les aconsejamos salir con tiempo desde sus casas ya que el lugar es en las afueras de Medell&iacute;n y por ser un d&iacute;a s&aacute;bado, el tr&aacute;fico en la ciudad es bastante pesado.</p>
 								<div class="meta">
 									<p>Fecha:&nbsp;&nbsp;&nbsp;S&aacute;bado 18 de Agosto de 2018</p>
 									<p>Hora:&nbsp;&nbsp;&nbsp;04:00pm.</p>
-									<p>Lugar:&nbsp;&nbsp;&nbsp;Iglesia San Juan de la Tasajera (Copacabana)</p>
+									<p>Lugar:&nbsp;&nbsp;&nbsp;Parroquia San Juan de la Tasajera (Copacabana)</p>
                   <p>Direcci&oacute;n:&nbsp;&nbsp;&nbsp;Calle 48 # 27-39</p>
                   <p><a href="https://www.google.com.co/maps/place/Iglesia+San+Juan+de+La+Tasajera/@6.356053,-75.495429,15z/data=!4m12!1m6!3m5!1s0x0:0xe613e5748e30aee!2sIglesia+San+Juan+de+La+Tasajera!8m2!3d6.356053!4d-75.495429!3m4!1s0x0:0xe613e5748e30aee!8m2!3d6.356053!4d-75.495429" target="_blank">Ver en Google Maps</a></p>
                   <p>Mapa: </p>
@@ -199,12 +214,12 @@
 						<div class="col-lg-6 col-md-12 mt-60 no-padding">
 							<div class="info-content2">
 								<h1>Recepci&oacute;n</h1>
-								<p>La recepci&oacute;n se realizar&aacute; en la finca "Villa Roc&iacute;o" ubicada tambi&eacute;n en Copacabana (Antioquia).<br></p>
+								<p>La recepci&oacute;n se realizar&aacute; en la <b>"Finca Villa Roc&iacute;o"</b> ubicada tambi&eacute;n en Copacabana (Antioquia).<br></p>
 								<div class="meta">
 									<p>Fecha:&nbsp;&nbsp;&nbsp;S&aacute;bado 18 de Agosto de 2018</p>
-									<p>Hora:&nbsp;&nbsp;&nbsp;05:30pm.</p>
-									<p>Lugar:&nbsp;&nbsp;&nbsp;Finca Villa Roc&iacute;o (Parcelacion El Limonar) (Copacabana)</p>
-                  <p>Direcci&oacute;n:&nbsp;&nbsp;&nbsp;Autopista Norte Kilometro 18, Parcelacion El Limonar, Finca 27</p>
+									<p>Hora:&nbsp;&nbsp;&nbsp;05:00pm.</p>
+									<p>Lugar:&nbsp;&nbsp;&nbsp;Finca Villa Roc&iacute;o (Copacabana)</p>
+                  <p>Direcci&oacute;n:&nbsp;&nbsp;&nbsp;Autopista Norte Km 18, Parcelaci&oacute;n El Limonar, <b>Finca #27</b></p>
                   <p><a href="https://goo.gl/maps/7PZ1g1hp1zm" target="_blank">Ver en Google Maps</a></p>
                   <p>Mapa: </p>
                   <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.056294556042!2d-75.48241758523!3d6.3867368953786565!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9d5609523831b6b1!2sFinca+Villa+Roc%C3%ADo!5e0!3m2!1ses!2sco!4v1520750712794" width="300" height="300" frameborder="0" style="border:0" allowfullscreen></iframe></p>
@@ -221,6 +236,55 @@
 			</section>			
 			<!-- End information Area -->
 			
+      <!-- Start About Area -->
+			<section class="About-area pt-100 pb-60" id="about">
+				<div class="container">
+					<div class="carousel-trigger">
+							<div class="next-trigger"><span class="lnr lnr-arrow-right"></span></div>
+							<div class="prev-trigger"><span class="lnr lnr-arrow-left"></span></div>	
+						</div> 						
+					<div class="active-about-carousel">
+						<div class="item">
+							<div class="row justify-content-center align-items-center">
+								<div class="col-lg-6">
+									<h1>Vestuario para <span>Ellas</span></h1>
+									<p>
+										- Usar vestido de Coctel.<br>
+                    - Recomendamos usar vestido con colores pasteles.<br>
+                    - No usar color blanco.<br>
+                    - Evita usar tacones de punta delgada.<br>
+                    - No usar vestidos cortos (M&aacute;s arriba de la rodilla).
+									</p>
+								</div>
+								<div class="col-lg-6">
+									<img class="img-fluid mx-auto" src="img/about.png" alt="">
+								</div>										
+							</div>
+						</div>
+						
+            <div class="item">
+							<div class="row justify-content-center align-items-center">
+								<div class="col-lg-6">
+									<h1>Vestuario para <span>Ellos</span></h1>
+									<p>
+										- Usar traje formal o Blazer.<br>
+                    - Recomendamos usar traje de tonos oscuros.<br>
+                    - No usar traje con colores claros (Como el Blanco, Beige o Gris claro).<br>
+                    - La corbata es opcional.
+									</p>
+								</div>
+								<div class="col-lg-6">
+									<img class="img-fluid mx-auto" src="img/about2.png" alt="">
+								</div>										
+							</div>
+						</div>
+            
+						</div>
+					</div>					
+				</div>	
+			</section>
+			<!-- End About Area -->
+      
 			<!-- Start reservation Area -->
 			<section class="reservation-area section-gap relative" id="reservation">
 				<div class="container">
@@ -278,74 +342,20 @@
 			<!-- End reservation Area -->
 			
       <!-- Start About Area -->
-			<section class="About-area pt-100 pb-60" id="about">
-				<div class="container">
-					<div class="carousel-trigger">
-							<div class="next-trigger"><span class="lnr lnr-arrow-right"></span></div>
-							<div class="prev-trigger"><span class="lnr lnr-arrow-left"></span></div>	
-						</div> 						
-					<div class="active-about-carousel">
-						<div class="item">
-							<div class="row justify-content-center align-items-center">
-								<div class="col-lg-6">
-									<h1>Acerca de <span>M&oacute;nica</span></h1>
-									<p>
-										Few would argue that, despite the advancements of feminism over the past three decades, women still face a double standard when it comes to their behavior. While men’s borderline-inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace.								
-									</p>
-									<p>
-										While men’s borderline-inappropriate behavior is often laughed off as “boys will be boys,”
-									</p>
-								</div>
-								<div class="col-lg-6">
-									<img class="img-fluid mx-auto" src="img/about.png" alt="">
-								</div>										
-							</div>
-						</div>
-						<div class="item">
-							<div class="row justify-content-center align-items-center">
-								<div class="col-lg-6">
-									<h1>Acerca de <span>Luis</span></h1>
-									<p>
-										Few would argue that, despite the advancements of feminism over the past three decades, women still face a double standard when it comes to their behavior. While men’s borderline-inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace.								
-									</p>
-									<p>
-										While men’s borderline-inappropriate behavior is often laughed off as “boys will be boys,”
-									</p>
-								</div>
-								<div class="col-lg-6">
-									<img class="img-fluid mx-auto" src="img/about2.png" alt="">
-								</div>										
-							</div>
-						</div>
-            <div class="item">
-							<div class="row justify-content-center align-items-center">
-								<div class="col-lg-6">
-									<h1>C&oacute;mo nos <span>conocimos</span></h1>
-									<p>
-										Few would argue that, despite the advancements of feminism over the past three decades, women still face a double standard when it comes to their behavior. While men’s borderline-inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace.								
-									</p>
-									<p>
-										While men’s borderline-inappropriate behavior is often laughed off as “boys will be boys,”
-									</p>
-								</div>
-								<div class="col-lg-6">
-									<img class="img-fluid mx-auto" src="img/about3.png" alt="">
-								</div>										
-							</div>
-						</div>
-					</div>					
-				</div>	
-			</section>
-			<!-- End About Area -->
+      <!-- End About Area -->
       
       <!-- Start gallery Area -->
 			<section class="gallery-area pt-100" id="gallery">
 				<div class="container-fluid">
 					<div class="row headz justify-content-center">
 						<div class="col-lg-8">
-							<h1>Nuestra Preboda</h1>
+							<h1>Galer&iacute;a Preboda</h1>
 							<p>
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br>incididunt ut labore  et dolore magna aliqua.
+								El amor es paciente y bondadoso. El amor no es celoso ni fanfarr&oacute;n ni orgulloso ni ofensivo.<br>
+                No exige que las cosas se hagan a su manera. No se irrita ni lleva un registro de las ofensas<br>
+                recibidas. No se alegra de la injusticia sino que se alegra cuando la verdad triunfa.<br>
+                El amor nunca se da por vencido, jam&aacute;s pierde la fe, siempre tiene esperanzas y se mantiene<br> 
+                firme en toda circunstancia.<br><a style="font-weight: bold;">1 Corintios 13:4-7</a>
 							</p>							
 						</div>
 					</div>
@@ -369,19 +379,30 @@
 					<div class="row justify-content-center">
 						<div class="footer-top flex-column">
 							<ul class="footer-menu">
-								<li><a href="#">Home</a></li>
-								<li><a href="#">About us</a></li>
-								<li><a href="#">gallery</a></li>
-								<li><a href="#">reservations</a></li>
+								<li><a href="#home">Invitaci&oacute;n</a></li>
+								<li><a href="#infoboda">La Boda</a></li>
+								<li><a href="#gallery">Galer&iacute;a Preboda</a></li>
+								<li><a href="#reservation">
+                      <?php
+                        if($isConfirmado)
+                          echo "Asistencia Confirmada";
+                        else
+                          echo "Confirmar Asistencia";
+                      ?>                
+                    </a>
+                </li>
 							</ul>
-							<div class="footer-social">
+							<!--
+              <div class="footer-social">
 								<a href="#"><i class="fa fa-facebook"></i></a>
 								<a href="#"><i class="fa fa-twitter"></i></a>
 								<a href="#"><i class="fa fa-dribbble"></i></a>
 								<a href="#"><i class="fa fa-behance"></i></a>
-							</div>								
+							</div>
+              -->
 						</div>					
 					</div>
+          <br>
 					<div class="row footer-bottom justify-content-center">
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						<p class="col-lg-8 col-sm-12 footer-text">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>

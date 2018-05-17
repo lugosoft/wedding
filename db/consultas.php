@@ -2,6 +2,7 @@
 $query = array();
 /*--------------------- S E L E C T S -----------------------*/
 
+$query["queryUsuarioByUserId"] = "SELECT nombre, email, celular, nro_invitados, nro_confirmados, mesa FROM usuarios where id='#p1'";
 
 $query["setLlegadaInvitado"] = "update invitados 
                                  set llego = (llego*-1) 
@@ -19,7 +20,7 @@ $query["updateUsuarioConfirmado"] =  "update usuarios
                                       obs = '#p4'
                                       where id = '#p1'";
 
-$query["queryInvitadosByUserId"] = "SELECT nombre FROM invitados where id_usuario='#p1' order by seq";
+$query["queryInvitadosByUserId"] = "SELECT nombre, nombre_completo FROM invitados where id_usuario='#p1' order by seq";
 
 $query["queryInvitadosConfirm"] = "SELECT seq, nombre, nombre_completo, llego FROM invitados where id_usuario='#p1' and confirmado = 'SI' order by seq";
 

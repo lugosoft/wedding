@@ -126,6 +126,31 @@ h4, h5, h6 {
   font-weight: 600;
 }
 
+.font-invitacion2 {
+	font-family: "Architects Daughter";
+	font-size: 12pt;
+	font-style: normal;
+	font-variant: normal;
+  line-height: 90%;
+}
+
+.font-invitacion3 {
+	font-family: "Architects Daughter";
+	font-size: 12pt;
+	font-style: normal;
+	font-variant: normal;
+  font-weight: bold;
+  line-height: 90%;
+}
+
+.font-invitacion4 {
+	font-family: "Architects Daughter";
+	font-size: 10pt;
+	font-style: normal;
+	font-variant: normal;
+  line-height: 90%;
+}
+
 .h1, .h2, .h3,
 .h4, .h5, .h6 {
   margin-bottom: 0;

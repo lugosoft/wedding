@@ -100,11 +100,27 @@ function getInvitados($userId){
 	$sql  = @getSql("queryInvitadosByUserId",$userId);
 	$res = queryDB($sql);
   $i = 0;
-  $listInv = "";
 	foreach ($res as &$fila) {
     $i++;
   }
   return array('cnt' => $i, 'lista' =>$res); 
+}
+
+function getInfoUsuario($userId){
+  $res = array();
+	$sql  = @getSql("queryUsuarioByUserId",$userId);
+	$res = queryDB($sql);
+  $i = 0;
+  $infoUser = array();
+	foreach ($res as &$fila) {
+    $infoUser = array('nombre' => $fila[0], 
+                      'email' =>$fila[1], 
+                      'celular' =>$fila[2], 
+                      'nro_invitados' =>$fila[3], 
+                      'nro_confirmados' =>$fila[4], 
+                      'mesa' =>$fila[5]); 
+  }
+  return $infoUser; 
 }
 
 function getSeqInvitadosConfirmados($userId){
@@ -136,15 +152,18 @@ function getTextoInvitados($userId){
 	foreach ($res as &$fila) {
     $i++;
     if($i == 1){
-      $listInv = $fila[0];
+      //$listInv = $fila[0];
+      $listInv = $fila[1];
     }elseif ($i < $cnt){
-      $listInv = $listInv.', '.$fila[0];
+      //$listInv = $listInv.', '.$fila[0];
+      $listInv = $listInv.'<br>'.$fila[1];
     }else{
-      $listInv = $listInv.' y '.$fila[0];
+      //$listInv = $listInv.' y '.$fila[0];
+      $listInv = $listInv.'<br>'.$fila[1];
     }
 	}
   
-	return "Invitaci&oacute;n para:<br>".$listInv;
+	return "<br>".$listInv;
 }
 
 function getOpcionesInvitados($userId){
@@ -305,7 +324,9 @@ function printInfoRecepcion($userId){
   $listaInvitados = '';
   $res = array();
   if($isConfirmado){
-    $mesa = "14";
+    // Se obtiene la mesa asociada al invitado
+    $infoUser = getInfoUsuario($userId);
+    $mesa = $infoUser['mesa'];    
     $r = getSeqInvitadosConfirmados($userId);
     $cntConfirm = $r['cnt'];
     $valuesConfirm = $r['values'];

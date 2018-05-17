@@ -12,7 +12,8 @@ create table usuarios(
   confirmo varchar(10),
   nro_confirmados int(6),
   fecha_confirmo TIMESTAMP,
-  obs varchar(1000)
+  obs varchar(1000),
+  mesa varchar(20)
 );
 
 alter table usuarios add obs varchar(1000)
@@ -148,3 +149,7 @@ where u.id = 'truizd'
 and o.nro_invitados = u.nro_invitados
 order by o.seq;
 
+UPDATE usuarios SET mesa = '10' WHERE id = 'lili';
+UPDATE usuarios SET mesa = '5' WHERE id = 'truizd';
+UPDATE usuarios SET mesa = '7' WHERE id = 'etachej';
+UPDATE usuarios SET mesa = '3' WHERE id = 'isa';
