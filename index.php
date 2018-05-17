@@ -184,7 +184,8 @@
 						<div class="col-lg-6">
 							<h1>Informaci&oacute;n de la Boda</h1>
 							<p>
-								Nuestro gran d&iacute;a se llevar&aacute; a cabo en dos lugares campestres en Copacabana (Antioquia).<br>Esperamos que se sientan a gusto en estos espacios, pues los hemos escogido para pasar un d&iacute;a muy especial con ustedes nuestros familiares y amigos m&aacute;s cercanos.
+								Nuestro gran d&iacute;a se llevar&aacute; a cabo en dos lugares campestres en Copacabana (Antioquia).<br>Esperamos que se sientan a gusto en estos espacios, pues los hemos escogido para pasar un d&iacute;a muy especial con ustedes nuestros familiares y amigos m&aacute;s cercanos.<br>
+                No olvides confirmarnos tu asistencia <a href='#reservation'>aqu&iacute;</a>.<br>Los presentes lo recibimos en <b>Lluvia de Sobres</b>.
 							</p>							
 						</div>
 					</div>					
@@ -253,7 +254,7 @@
                     - Recomendamos usar vestido con colores pasteles.<br>
                     - No usar color blanco.<br>
                     - Evita usar tacones de punta delgada.<br>
-                    - No usar vestidos cortos (M&aacute;s arriba de la rodilla).
+                    - Evita usar vestidos cortos (Por encima de la rodilla).
 									</p>
 								</div>
 								<div class="col-lg-6">
@@ -299,7 +300,7 @@
                 }else{
                   echo"<h1 class='text-white h1'>Confirmar Asistencia</h1>
                        <p class='p1'>
-                        A continuaci&oacute;n por favor confirma las personas que asistiran a nuestra boda.<br>Ten presente que tienes hasta el 30 de Junio para confirmarnos ya que nosotros necesitamos saber con anticipación cuantos invitados nos acompañaran.<br>Si no nos confirmas por este medio asumiremos que no nos podr&aacute;s acompa&ntilde;ar y no estar&aacute;s en la lista de invitados.  
+                        A continuaci&oacute;n por favor confirma las personas que asistir&aacute;n a nuestra boda.<br>Ten presente que tienes hasta el <b>30 de Junio</b> para confirmarnos debido a que necesitamos saber con anticipación cuantos invitados nos acompañar&aacute;n.<br>Si no nos confirmas por este medio asumiremos que no nos podr&aacute;s acompa&ntilde;ar y no estar&aacute;s en la lista de invitados permitidos para ingresar a la recepci&oacute;n.  
                       </p>";
                 }
               ?>
@@ -351,11 +352,11 @@
 						<div class="col-lg-8">
 							<h1>Galer&iacute;a Preboda</h1>
 							<p>
-								El amor es paciente y bondadoso. El amor no es celoso ni fanfarr&oacute;n ni orgulloso ni ofensivo.<br>
+								<i>&quot;El amor es paciente y bondadoso. El amor no es celoso ni fanfarr&oacute;n ni orgulloso ni ofensivo.<br>
                 No exige que las cosas se hagan a su manera. No se irrita ni lleva un registro de las ofensas<br>
                 recibidas. No se alegra de la injusticia sino que se alegra cuando la verdad triunfa.<br>
                 El amor nunca se da por vencido, jam&aacute;s pierde la fe, siempre tiene esperanzas y se mantiene<br> 
-                firme en toda circunstancia.<br><a style="font-weight: bold;">1 Corintios 13:4-7</a>
+                firme en toda circunstancia.&quot;</i><br><a style="font-weight: bold;">1 Corintios 13:4-7</a>
 							</p>							
 						</div>
 					</div>
