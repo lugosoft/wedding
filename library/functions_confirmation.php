@@ -1,6 +1,110 @@
 ﻿<?php 
 include "db/funciones_db.php";
 include "db/consultas.php";
+include("phpmailer/class.phpmailer.php");
+include("phpmailer/class.smtp.php");
+require_once 'conf_mail.php';
+
+$URL_SERVIDOR = 'http://receptivosbackup.com/wedding/';
+
+/*********************************************************
+ * Author    : Luis Gonzalez
+ * Function  : enviarCorreo
+ * Parameters: $email: Lista de emails de los destinatarios, $usuarios: Lista de nombres de los destinatarios
+			   $asunto asunto del email, $mensaje cuerpo del mensaje, $archivos array de rutas de archivos adjuntos
+ * Return    : Estatus del envio
+ * Example   : enviarCorreo("destinatario@dominio.com","Carmen Perez","Datos de Acceso al Sistema","<html>...</html>","");
+ **********************************************************/
+function enviarCorreo($emails,$usuarios,$asunto,$mensaje,$archivos=array())
+{
+	$mail=new PHPMailer();
+	
+	$mail->SMTPDebug  = MAIL_DEBUG;
+	
+	$mail->IsSMTP();
+	$mail->SMTPAuth=true;
+	
+	$mail->Host= MAIL_HOST;
+	$mail->Port= MAIL_PORT;
+	
+	$mail->Username= MAIL_USER;
+	$mail->Password= MAIL_PASS;
+	
+	if (defined("MAIL_SECURE_SMTP")) {
+		$mail->SMTPSecure= MAIL_SECURE_SMTP;
+	}
+	
+	if (defined("MAIL_FROM")) {
+		$mail->SetFrom(MAIL_FROM, MAIL_FROMNAME);
+		
+		if ( MAIL_REPLYTO == 1 ) {
+			$mail->AddReplyTo(MAIL_FROM, MAIL_FROMNAME);
+		}
+	}
+	// Validar si es necesario
+	$mail->SMTPKeepAlive = true;
+	
+	$mail->WordWrap   = MAIL_WORDWRAP; // set word wrap
+	
+	
+	$mail->Subject=$asunto;
+	// Para pruebas (En manteniemiento) NO se envía al correo indicado sino a los desarrolladores
+  if (MAIL_STATUS == 1) {
+    $arrEmails = explode(";",$emails);
+    $arrUsuarios = explode(";",$usuarios);
+    for($i=0;$i<=count($arrEmails)-1;$i++){
+      $email = $arrEmails[$i];
+      $usuario = $arrUsuarios[$i];
+      $mail->AddAddress($email,$usuario);
+    }
+  }else{
+    $mail->AddAddress(MAIL_DEVELOP1,'Developer 1');
+    $mail->AddAddress(MAIL_DEVELOP2,'Developer 2');
+  }
+	$mail->IsHTML(true); // send as HTML
+	$mail->MsgHTML($mensaje);
+	
+	//attachments
+	$totalElementos = count($archivos);
+	for ($i = 0; $i < $totalElementos; $i++) 
+	{
+		$mail->AddAttachment($array[$i], $array[$i+1]); // attachment
+		$i++;
+	}
+	
+	//send
+	if(!$mail->Send()) 
+	{
+		throw new Exception("Error al Enviar Correo Electr&oacute;nico.- ".$mail->ErrorInfo);
+	} 
+	else
+	{
+		$mail->ClearAddresses();
+		$mail->ClearReplyTos();
+		$mail->SmtpClose();
+		
+		return true;
+	}
+}
+
+function enviarCorreoConfirmacion($pUserId, $pNombresInvitados, $pEmailsInivitados, $pInvitados){
+  global $URL_SERVIDOR;
+  $res = 'OK';
+  //Se obtiene la plantilla del correo
+  $body = file_get_contents('mail_confirmacion.html');
+  $body = str_replace("[userId]", $pUserId, $body);
+  $body = str_replace("[invitados]", $pInvitados, $body);
+  $body = str_replace("[server_url]", $URL_SERVIDOR, $body);
+  
+  if (enviarCorreo($pEmailsInivitados, $pNombresInvitados, "Te esperamos en nuestra boda", $body)) {
+    // Correo enviado con éxito
+    $res = 'OK';
+  } else {
+    // Error al enviar correo
+    $res = 'KO';
+  }
+  return $res;
+}
 
 function getMsgCaractEsp($texto, $js = 'no'){
 	if ($js == 'no'){
@@ -103,6 +207,9 @@ function saveConfirmation($guests, $userId, $obs){
     $nroConfirmados = 0;
     $obs = 'NO ASISTIRAN '.$obs;
   }else{
+    $nombres = '';
+    $emails = '';
+    $invitados = '';
     for($i=0;$i<count($guestsList);$i++){
       $sql  = @getSql("updateInvConfirmado", $userId, $guestsList[$i]);
       $r = modifyDB($sql);
@@ -115,7 +222,31 @@ function saveConfirmation($guests, $userId, $obs){
         $nroConfirmados = 0;
         $confirm = 'NO';
         break;      
-      } 
+      }
+      // Se consulta la info del invitado para agregarlo como destinatario
+      $res = array();
+      $sql2  = @getSql("queryInvitadosByUserIdSeq", $userId, $guestsList[$i]);
+      $res = queryDB($sql2);
+      foreach ($res as &$fila) {
+        if($invitados=='')
+          $invitados = $fila[1];
+        else
+          $invitados = $invitados."<br>".$fila[1];
+        if($fila[2] != ''){
+          if($nombres=='')
+            $nombres = $fila[0];
+          else
+            $nombres = $nombres.";".$fila[0];
+          
+          if($emails=='')
+            $emails = $fila[2];
+          else
+            $emails = $emails.";".$fila[2];
+        }
+      }
+    }
+    if($nombres != ''){
+      $sendEmail = enviarCorreoConfirmacion($userId, $nombres, $emails, $invitados);
     }
   }
   

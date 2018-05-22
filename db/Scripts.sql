@@ -97,7 +97,21 @@ insert into invitados(id_usuario,seq,nombre,nombre_completo,email,
 values('lili',3,'Julio','Julio AAA','julio@gmail.com',
        '3004509080','NO'); 
 
+--  albertog
+insert into usuarios(id,nombre,email,celular,nro_invitados,
+                     invitado,fecha_invitacion,confirmo,nro_confirmados,fecha_confirmo)
+values('albertog','Alberto','lugo.ing@gmail.com','3116552659',2,
+       'SI',CURDATE(),'NO',0,NULL);
+       
+insert into invitados(id_usuario,seq,nombre,nombre_completo,email,
+                      celular,confirmado)
+values('albertog',1,'Alberto','Alberto Gonzalez','lugo.ing@gmail.com',
+       '3116552659','NO');                      
 
+insert into invitados(id_usuario,seq,nombre,nombre_completo,email,
+                      celular,confirmado)
+values('albertog',2,'Andrea','Andrea Olivella','moni.olivella@gmail.com',
+       '3005141198','NO'); 
        
 create table opciones(
   nro_invitados int(6),
@@ -153,3 +167,15 @@ UPDATE usuarios SET mesa = '10' WHERE id = 'lili';
 UPDATE usuarios SET mesa = '5' WHERE id = 'truizd';
 UPDATE usuarios SET mesa = '7' WHERE id = 'etachej';
 UPDATE usuarios SET mesa = '3' WHERE id = 'isa';
+
+update invitados
+set email = 'lugo.ing@gmail.com'
+where seq = '1';
+
+update invitados
+set email = 'eroseninpaisa@gmail.com'
+where seq = '2';
+
+update invitados
+set email = 'moni.olivella@gmail.com'
+where seq = '3';

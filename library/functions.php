@@ -3,7 +3,9 @@ session_start();
 
 include "db/funciones_db.php";
 include "db/consultas.php";
-
+include("phpmailer/class.phpmailer.php");
+include("phpmailer/class.smtp.php");
+require_once 'conf_mail.php';
 
 $MAX_FILAS_REPORTE = 10;
 
@@ -355,6 +357,57 @@ function printInfoRecepcion($userId){
     $data = "<center><a style='color:red; font-size:50;'>Invitado<br>NO<br>encontrado</a></center>";
   }
   echo $data;
+}
+
+function printAsistencia($pFiltro){
+  $res = array();
+  $sql  = @getSql("queryAllInvitadosConfirm");
+  if($pFiltro=='LLEGO'){
+    $sql  = @getSql("queryLlegoInvitadosConfirm");
+  }
+  if($pFiltro=='NO_LLEGO'){
+    $sql  = @getSql("queryNoLlegoInvitadosConfirm");
+  }
+  
+	$res = queryDB($sql);
+  $i = 0;
+  $row = '';
+	foreach ($res as &$fila) {
+    $bgColor = '';
+    if($fila[3]=='-1')
+      $bgColor = 'white';
+    else
+      $bgColor = '#CEF6D8'; //Verde ya llego
+    $row = "<tr bgcolor='$bgColor'>";
+    $col = "<td>$fila[0]</td>";
+    $row = $row.$col;
+    $col = "<td>$fila[1]</td>";
+    $row = $row.$col;
+    $col = "<td>$fila[2]</td>";
+    $row = $row.$col;
+    $row = $row."</tr>";
+    echo($row."<br>");
+  }  
+}
+
+function getArrCntAsistencia(){
+  $res = array();
+  $sql  = @getSql("queryAllInvitadosConfirm");
+	$res = queryDB($sql);
+  $cntTodos = 0;
+  $cntLlego = 0;
+  $cntNoLlego = 0;
+	foreach ($res as &$fila) {
+    if($fila[3]=='1'){
+      $cntLlego = $cntLlego + 1;
+    }
+    if($fila[3]=='-1'){
+      $cntNoLlego = $cntNoLlego + 1;
+    }
+    $cntTodos = $cntTodos + 1;
+  }
+  
+  return array('cntTodos' => $cntTodos, 'cntLlego' =>$cntLlego, 'cntNoLlego' =>$cntNoLlego); 
 }
 
 ?>

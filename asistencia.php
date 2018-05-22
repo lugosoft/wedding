@@ -1,6 +1,13 @@
   <?php
     //error_reporting(E_ERROR | E_PARSE);
     include "library/functions.php";
+    function getFiltro($pID = 'TODOS'){
+        return $pID;
+    }
+    $filtro = @getFiltro($_GET['filtro']);
+    if($filtro == ''){
+      $filtro = 'TODOS';
+    }
   ?>
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
@@ -39,7 +46,7 @@
           border-collapse: separate;
           border-spacing: 0;
           border: 2px solid #000066;
-          width: 400px;
+          width: 360px;
           margin: 50px auto;
           border-radius: .25rem;
         }
@@ -59,11 +66,6 @@
           border-bottom: 3px solid #ddd;
         }
 
-        tbody tr:hover {
-          background-color: #f2f2f2;
-          cursor: default;
-        }
-
         tbody tr:last-child td {
           border: none;
         }
@@ -73,8 +75,8 @@
         }
 
         td:last-child {
-          text-align: right;
-          padding-right: 10px;
+          text-align: center;
+          padding-right: 0px;
         }
 
         .button {
@@ -84,21 +86,37 @@
           margin-top: -4px;
         }
 
-        .edit:hover {
-          color: #0a79df;
-        }
-
-        .delete:hover {
-          color: #dc2a2a;
-        }
+        
       </style>
 		</head>
 		<body>
-      <center>
         <table>
           <thead>
             <tr>
-              <th colspan="3">Lista de Invitados</th>
+              <?php $arrCnt = getArrCntAsistencia(); ?>
+              <td bgcolor='#E6E6E6' align="center" style="color:black;font-weight:bold;font-size:12pt;">
+                <a href="?filtro=TODOS">Todos (<?php echo $arrCnt['cntTodos']; ?>)</a>
+              </td>
+              <td bgcolor='#CEF6D8' align="center" style="color:black;font-weight:bold;font-size:12pt;">
+                <a href="?filtro=LLEGO">Llegaron (<?php echo $arrCnt['cntLlego']; ?>)</a>
+              </td>
+              <td bgcolor='white' align="center" style="color:black;font-weight:bold;font-size:12pt;">
+                <a href="?filtro=NO_LLEGO">Faltan (<?php echo $arrCnt['cntNoLlego']; ?>)</a>
+              </td>
+            </tr>
+          </thead>
+          <thead>
+            <tr>
+              <th colspan="3">
+                <?php
+                  if($filtro == 'TODOS')
+                    echo("Lista de TODOS los Invitados:");
+                  if($filtro == 'LLEGO')
+                    echo("Invitados que ya LLEGARON:");
+                  if($filtro == 'NO_LLEGO')
+                    echo("Invitados que FALTAN por llegar:");
+                ?>
+              </th>
             </tr>
             <tr>
               <th>Nombre</th>
@@ -107,27 +125,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Tulio Ruiz</td>
-              <td>3129098989</td>
-              <td>14</td>
-            </tr>
-            <tr>
-              <tr>
-              <td>Edith Tache</td>
-              <td>3204530776</td>
-              <td>14</td>
-            </tr>
-            </tr>
-            <tr>
-              <tr>
-              <td>Liliam Mendoza</td>
-              <td>3009098670</td>
-              <td>14</td>
-            </tr>
-            </tr>
+            <?php
+              printAsistencia($filtro);
+            ?>
           </tbody>
         </table>
-      </center>
+
 		</body>
 	</html>

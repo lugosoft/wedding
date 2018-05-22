@@ -2,6 +2,15 @@
 $query = array();
 /*--------------------- S E L E C T S -----------------------*/
 
+$query["queryInvitadosByUserIdSeq"] = "select nombre, nombre_completo, email from invitados 
+                                        where id_usuario = '#p1' and seq = '#p2';";
+                                 
+$query["queryAllInvitadosConfirm"] = "SELECT i.nombre_completo, i.celular, u.mesa, i.llego FROM invitados i, usuarios u where i.id_usuario = u.id and i.confirmado = 'SI' and u.confirmo = 'SI' order by i.nombre_completo";
+
+$query["queryLlegoInvitadosConfirm"] = "SELECT i.nombre_completo, i.celular, u.mesa, i.llego FROM invitados i, usuarios u where i.id_usuario = u.id and i.confirmado = 'SI' and u.confirmo = 'SI' and i.llego = 1 order by i.nombre_completo";
+
+$query["queryNoLlegoInvitadosConfirm"] = "SELECT i.nombre_completo, i.celular, u.mesa, i.llego FROM invitados i, usuarios u where i.id_usuario = u.id and i.confirmado = 'SI' and u.confirmo = 'SI' and i.llego = -1 order by i.nombre_completo";
+
 $query["queryUsuarioByUserId"] = "SELECT nombre, email, celular, nro_invitados, nro_confirmados, mesa FROM usuarios where id='#p1'";
 
 $query["setLlegadaInvitado"] = "update invitados 
