@@ -2,6 +2,7 @@
   error_reporting(E_ERROR | E_PARSE);
   include "library/functions.php";
   $isConfirmado = isInvitadoConfirmado($_GET['user_id']);
+  $numInvitados = getInvitados($_GET['user_id'])['cnt'];
   ?>
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
@@ -67,16 +68,16 @@
                     <li class="nav-item">
 							        <a class="nav-link" href="#about">C&oacute;digo Vestuario</a>
 							      </li>
-							      <li class="nav-item">
-							        <a class="nav-link" href="#reservation">
-                      <?php
-                      if($isConfirmado)
-                        echo "Asistencia Confirmada";
-                      else
-                        echo "Confirmar Asistencia";
-                      ?>
-                      </a>
-							      </li>
+                    <?php 
+                      if($numInvitados > 0){
+                        echo"<li class='nav-item'><a class='nav-link' href='#reservation'>";
+                        if($isConfirmado)
+                          echo "Asistencia Confirmada";
+                        else
+                          echo "Confirmar Asistencia";
+                        echo"</a></li>";
+                      }
+                    ?>
                     <li class="nav-item">
 							        <a class="nav-link" href="#gallery">Galer&iacute;a Preboda</a>
 							      </li>
@@ -109,14 +110,22 @@
               <div class="banner-content col-lg-12 col-md-12" style="padding-top: 540px;"> <!-- style="padding-top: 580px;" -->
                   <p>
                     <a class="font-invitacion2" style="color:#525252;">
-                      Invitaci&oacute;n para:
+                      <?php if($numInvitados > 0) echo "Invitaci&oacute;n para:"; ?>
                     </a>
                     <a class="font-invitacion3" style="color:#525252;">
                       <?php echo getTextoInvitados($_GET['user_id']); ?>
                     </a>
                     <br>
                     <a class="font-invitacion4" style="color:525252;">
-                      Por favor confirmanos tu asistencia <a href='#reservation'>aqu&iacute;</a>
+                      <?php 
+                        if($numInvitados > 0){
+                          if($isConfirmado){
+                            echo "Asistencia Confirmada"; 
+                          }else{
+                            echo "Por favor confirmanos tu asistencia <a href='#reservation'>aqu&iacute;</a>"; 
+                          }
+                        } 
+                      ?>
                     </a>
                   </p>
 							</div>
@@ -185,7 +194,8 @@
 							<h1>Informaci&oacute;n de la Boda</h1>
 							<p>
 								Nuestro gran d&iacute;a se llevar&aacute; a cabo en dos lugares campestres en Copacabana (Antioquia).<br>Esperamos que se sientan a gusto en estos espacios, pues los hemos escogido para pasar un d&iacute;a muy especial con ustedes nuestros familiares y amigos m&aacute;s cercanos.<br>
-                No olvides confirmarnos tu asistencia <a href='#reservation'>aqu&iacute;</a>.<br>Los presentes lo recibimos en <b>Lluvia de Sobres</b>.
+                <?php if($numInvitados > 0) echo "No olvides confirmarnos tu asistencia <a href='#reservation'>aqu&iacute;</a>.<br>"; ?>
+                Los presentes lo recibimos en <b>Lluvia de Sobres</b>.
 							</p>							
 						</div>
 					</div>					
@@ -287,7 +297,7 @@
 			<!-- End About Area -->
       
 			<!-- Start reservation Area -->
-			<section class="reservation-area section-gap relative" id="reservation">
+			<section class="reservation-area section-gap relative" id="reservation" <?php if($numInvitados == 0) echo" style='display: none;' "; ?> >
 				<div class="container">
           <form class="booking-form" id="myForm" action="">
 					<div class="overlay overlay-bg"></div>
@@ -383,15 +393,16 @@
 								<li><a href="#home">Invitaci&oacute;n</a></li>
 								<li><a href="#infoboda">La Boda</a></li>
 								<li><a href="#gallery">Galer&iacute;a Preboda</a></li>
-								<li><a href="#reservation">
-                      <?php
-                        if($isConfirmado)
-                          echo "Asistencia Confirmada";
-                        else
-                          echo "Confirmar Asistencia";
-                      ?>                
-                    </a>
-                </li>
+                <?php 
+                  if($numInvitados > 0){
+                    echo"<li><a href='#reservation'>";
+                    if($isConfirmado)
+                      echo "Asistencia Confirmada";
+                    else
+                      echo "Confirmar Asistencia";
+                    echo"</a></li>";
+                  }
+                ?>
 							</ul>
 							<!--
               <div class="footer-social">
