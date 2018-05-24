@@ -194,7 +194,7 @@
 							<h1>Informaci&oacute;n de la Boda</h1>
 							<p>
 								Nuestro gran d&iacute;a se llevar&aacute; a cabo en dos lugares campestres en Copacabana (Antioquia).<br>Esperamos que se sientan a gusto en estos espacios, pues los hemos escogido para pasar un d&iacute;a muy especial con ustedes nuestros familiares y amigos m&aacute;s cercanos.<br>
-                <?php if($numInvitados > 0) echo "No olvides confirmarnos tu asistencia <a href='#reservation'>aqu&iacute;</a>.<br>"; ?>
+                <?php if(($numInvitados > 0)&&(!$isConfirmado)) echo "No olvides confirmarnos tu asistencia <a href='#reservation'>aqu&iacute;</a>.<br>"; ?>
                 Los presentes lo recibimos en <b>Lluvia de Sobres</b>.
 							</p>							
 						</div>
@@ -324,21 +324,16 @@
 							 	<div class="row">
                   
                   <div class="alert-msg"><?php printInvitadosConfirmados2($_GET['user_id']); ?></div>
-                  <div class="col-lg-12 d-flex justify-content-center send-btn">&nbsp;</div>
-                  
+
                   <input type="hidden" name="user_id" value="<?php echo $_GET['user_id']; ?>">
                   
-							 		<div class="col-lg-12 d-flex flex-column">
+							 		<div class="col-lg-12 d-flex justify-content-center">
                     <div class="default-select" id="default-select">
                       <select name="guests">
                         <?php echo printOpcionesConfir($_GET['user_id']); ?>
                       </select>
                     </div>
 							 		</div>
-                  
-									<div class="col-lg-12 d-flex flex-column">
-										<textarea class="form-control mt-20" name="message" placeholder="Agrega aqu&iacute; una nota si lo requieres" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Agrega aqu&iacute; una nota si lo requieres'"></textarea>
-									</div>
 									
 									<div class="col-lg-12 d-flex justify-content-center send-btn">
 										<button class="submit-btn primary-btn mt-20 text-uppercase ">Enviar Confirmaci&oacute;n<span class="lnr lnr-arrow-right"></span></button>
@@ -378,6 +373,13 @@
 							<img class="item" src="img/g4.jpg" alt="">
 							<img class="item" src="img/g5.jpg" alt="">
 							<img class="item" src="img/g6.jpg" alt="">
+							<img class="item" src="img/g7.jpg" alt="">
+							<img class="item" src="img/g8.jpg" alt="">
+							<img class="item" src="img/g9.jpg" alt="">
+							<img class="item" src="img/g10.jpg" alt="">
+							<img class="item" src="img/g11.jpg" alt="">
+							<img class="item" src="img/g12.jpg" alt="">
+							<img class="item" src="img/g13.jpg" alt="">
 						</div>
 					</div>
 				</div>	

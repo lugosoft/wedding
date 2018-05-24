@@ -2,7 +2,7 @@
     Require_once "library/functions_confirmation.php";
     
     $guests= $_POST["guests"];
-    $message= $_POST["message"];
+    $message= "";
     $userId= $_POST["user_id"];
     $guestsText = "";
     if($guests != '99'){

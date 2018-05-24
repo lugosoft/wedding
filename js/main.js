@@ -48,7 +48,7 @@ $(document).ready(function(){
     });
 
     $('.active-gallery-carusel').owlCarousel({
-        items:6,
+        items:3,
         loop:true,
         autoplay:true
     })
