@@ -2,7 +2,9 @@
   error_reporting(E_ERROR | E_PARSE);
   include "library/functions.php";
   $isConfirmado = isInvitadoConfirmado($_GET['user_id']);
-  $numInvitados = getInvitados($_GET['user_id'])['cnt'];
+  //$numInvitados = getInvitados($_GET['user_id'])['cnt'];
+  $arrInvitados = getInvitados($_GET['user_id']);
+  $numInvitados = $arrInvitados['cnt'];
   ?>
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
@@ -37,7 +39,6 @@
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter" />
 		</head>
 		<body>
-
 			<!-- Start Header Area -->
 			<header>
 				<div class="container">
@@ -362,7 +363,10 @@
                 recibidas. No se alegra de la injusticia sino que se alegra cuando la verdad triunfa.<br>
                 El amor nunca se da por vencido, jam&aacute;s pierde la fe, siempre tiene esperanzas y se mantiene<br> 
                 firme en toda circunstancia.&quot;</i><br><a style="font-weight: bold;">1 Corintios 13:4-7</a>
-							</p>							
+							</p>
+              <p>
+								Preboda by: <a href="https://www.instagram.com/milojaramillofotos/"><i class="fa fa-instagram">&nbsp;milojaramillofotos</i></a>
+							</p>
 						</div>
 					</div>
 					<div class="row no-padding">
@@ -415,12 +419,6 @@
 							</div>
               -->
 						</div>					
-					</div>
-          <br>
-					<div class="row footer-bottom justify-content-center">
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						<p class="col-lg-8 col-sm-12 footer-text">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</div>
 				</div>
 			</footer>	

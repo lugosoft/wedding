@@ -5,7 +5,7 @@ include("phpmailer/class.phpmailer.php");
 include("phpmailer/class.smtp.php");
 require_once 'conf_mail.php';
 
-$URL_SERVIDOR = 'http://receptivosbackup.com/wedding/';
+$URL_SERVIDOR = 'http://bodamonicayluis.com/invitacion/';
 
 /*********************************************************
  * Author    : Luis Gonzalez

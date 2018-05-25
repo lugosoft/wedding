@@ -108,6 +108,21 @@ function getInvitados($userId){
   return array('cnt' => $i, 'lista' =>$res); 
 }
 
+function getInvitadosPrima($userId){
+  return 0; 
+}
+
+function getTest($userId){
+  $res = array();
+	$sql  = @getSql("queryInvitadosByUserId",$userId);
+	$res = queryDB($sql);
+  $i = 0;
+	foreach ($res as &$fila) {
+    $i++;
+  }
+  return array('cnt' => 0, 'lista' =>'hola'); 
+}
+
 function getInfoUsuario($userId){
   $res = array();
 	$sql  = @getSql("queryUsuarioByUserId",$userId);
