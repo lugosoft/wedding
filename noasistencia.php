@@ -1,13 +1,6 @@
   <?php
     //error_reporting(E_ERROR | E_PARSE);
     include "library/functions.php";
-    function getFiltro($pID = 'TODOS'){
-        return $pID;
-    }
-    $filtro = @getFiltro($_GET['filtro']);
-    if($filtro == ''){
-      $filtro = 'TODOS';
-    }
   ?>
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
@@ -25,7 +18,7 @@
       <!-- meta character set -->
       <meta charset="UTF-8">
       <!-- Site Title -->
-      <title>Asistencia Boda</title>
+      <title>NO Asisten a Boda</title>
 
       <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
       <style>
@@ -46,7 +39,7 @@
           border-collapse: separate;
           border-spacing: 0;
           border: 2px solid #000066;
-          width: 420px;
+          width: 360px;
           margin: 50px auto;
           border-radius: .25rem;
         }
@@ -93,31 +86,9 @@
         <table>
           <thead>
             <tr>
-              <?php $arrCnt = getArrCntAsistencia(); ?>
-              <td>
-                &nbsp;
-              </td>
-              <td bgcolor='#E6E6E6' align="center" style="color:black;font-weight:bold;font-size:12pt;">
-                <a href="?filtro=TODOS">Todos (<?php echo $arrCnt['cntTodos']; ?>)</a>
-              </td>
-              <td bgcolor='#CEF6D8' align="center" style="color:black;font-weight:bold;font-size:12pt;">
-                <a href="?filtro=LLEGO">Llegaron (<?php echo $arrCnt['cntLlego']; ?>)</a>
-              </td>
-              <td bgcolor='white' align="center" style="color:black;font-weight:bold;font-size:12pt;">
-                <a href="?filtro=NO_LLEGO">Faltan (<?php echo $arrCnt['cntNoLlego']; ?>)</a>
-              </td>
-            </tr>
-          </thead>
-          <thead>
-            <tr>
-              <th colspan="4">
+              <th colspan="3">
                 <?php
-                  if($filtro == 'TODOS')
-                    echo("Lista de TODOS los Invitados:");
-                  if($filtro == 'LLEGO')
-                    echo("Invitados que ya LLEGARON:");
-                  if($filtro == 'NO_LLEGO')
-                    echo("Invitados que FALTAN por llegar:");
+                  echo("Invitados que NO Asistiran:");
                 ?>
               </th>
             </tr>
@@ -125,12 +96,11 @@
               <th>Id</th>
               <th>Nombre</th>
               <th>Celular</th>
-              <th>Mesa</th>
             </tr>
           </thead>
           <tbody>
             <?php
-              printAsistencia($filtro);
+              printNoAsistencia();
             ?>
           </tbody>
         </table>

@@ -389,10 +389,33 @@ function printAsistencia($pFiltro){
   $row = '';
 	foreach ($res as &$fila) {
     $bgColor = '';
-    if($fila[3]=='-1')
+    if($fila[4]=='-1')
       $bgColor = 'white';
     else
       $bgColor = '#CEF6D8'; //Verde ya llego
+    $row = "<tr bgcolor='$bgColor'>";
+    $col = "<td>$fila[0]</td>";
+    $row = $row.$col;
+    $col = "<td>$fila[1]</td>";
+    $row = $row.$col;
+    $col = "<td>$fila[2]</td>";
+    $row = $row.$col;
+    $col = "<td>$fila[3]</td>";
+    $row = $row.$col;
+    $row = $row."</tr>";
+    echo($row."<br>");
+  }  
+}
+
+function printNoAsistencia(){
+  $res = array();
+  $sql  = @getSql("queryAllInvitadosNoAsisten");
+  
+	$res = queryDB($sql);
+  $i = 0;
+  $row = '';
+	foreach ($res as &$fila) {
+    $bgColor = 'white';
     $row = "<tr bgcolor='$bgColor'>";
     $col = "<td>$fila[0]</td>";
     $row = $row.$col;
