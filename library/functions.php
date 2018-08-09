@@ -436,10 +436,10 @@ function getArrCntAsistencia(){
   $cntLlego = 0;
   $cntNoLlego = 0;
 	foreach ($res as &$fila) {
-    if($fila[3]=='1'){
+    if($fila[4]=='1'){
       $cntLlego = $cntLlego + 1;
     }
-    if($fila[3]=='-1'){
+    if($fila[4]=='-1'){
       $cntNoLlego = $cntNoLlego + 1;
     }
     $cntTodos = $cntTodos + 1;

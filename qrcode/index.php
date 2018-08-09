@@ -7,7 +7,7 @@
     <body>	
       <FORM ACTION="qrcode.php" METHOD="POST">
         <h1>Generar Codigo QR:</h1>
-        URL:<INPUT TYPE="text" id="url" name="url" VALUE="http://receptivosbackup.com/wedding/invitados.php" size="50px"><br>
+        URL:<INPUT TYPE="text" id="url" name="url" VALUE="http://bodamonicayluis.com/invitacion/invitados.php" size="50px"><br>
         USER ID:<INPUT TYPE="text" id="user_id" name="user_id" VALUE=""><br><br>
         <INPUT TYPE="submit" VALUE="Enviar"> 
       </FORM> 
